@@ -1,17 +1,17 @@
-export type createUserParams = {
-    clerkId: string,
-    firstName: string,
-    lastName: string,
-    userName: string,
-    photo:string,
-    email:string,
-}
+// ====== USER PARAMS
 
-export type UpdateUserParams = {
-    firstName: string,
-    lastName: string,
-    userName: string,
-    photo:string,
-}
-
-
+export type CreateUserParams = {
+    clerkId: string
+    firstName: string
+    lastName: string
+    username: string
+    email: string
+    photo: string
+  }
+  
+  export type UpdateUserParams = {
+    firstName: string
+    lastName: string
+    username: string
+    photo: string
+  }

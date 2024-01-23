@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,
-      userName: username!,
+      username: username!,
       firstName: first_name,
       lastName: last_name,
       photo: image_url,
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
     const { id, image_url, first_name, last_name, username } = evt.data
 
     const user = { 
-      userName: username!,
+      username: username!,
       firstName: first_name,
       lastName: last_name,
       photo: image_url
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
 
     const updatedUser = await updateUser(id, user)
 
-    return NextResponse.json({message: "OK", user: updateUser })
+    return NextResponse.json({message: "OK", user: updatedUser })
   }
 
   //Delete User

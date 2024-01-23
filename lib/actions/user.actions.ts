@@ -1,6 +1,6 @@
-"use server";
+"use server"
 
-import { UpdateUserParams, createUserParams } from "@/Types";
+import { UpdateUserParams, CreateUserParams } from "@/Types";
 import { handleError } from "../utils";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.models";
@@ -9,7 +9,9 @@ import Order from "../database/models/order.model";
 
 import { revalidatePath } from "next/cache";
 
-export async function createUser(user: createUserParams) {
+
+//Create user
+export async function createUser(user: CreateUserParams) {
 
     try {
         await connectToDatabase();
@@ -43,12 +45,15 @@ export async function updateUser( clerkId: string, user: UpdateUserParams) {
 export async function deleteUser (clerkId: string) {
     try {
         await connectToDatabase();
+
+        //Find the user to delete
         const userToDelete = await User.findOne( {clerkId})
 
         if (!userToDelete) throw new Error ("User not found")
          
         //Unlink relationships
         await Promise.all([
+            //Update the events collection to remove references to the user
             Event.updateMany(
                 {
                 _id: { $in: userToDelete.events} },
@@ -67,7 +72,7 @@ export async function deleteUser (clerkId: string) {
         const deletedUser = await User.findByIdAndDelete(userToDelete._id)
 
         revalidatePath('/')
-        return deleteUser ? JSON.parse(JSON.stringify(deleteUser)) : null
+        return deletedUser ? JSON.parse(JSON.stringify(deleteUser)) : null
 
     } catch(error) {
         handleError(error)
