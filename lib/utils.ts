@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 
 export function convertFileToUrl(file: File) {
- URL.createObjectURL(file) }
+ return URL.createObjectURL(file) }
 
  export const formatDateTime = (dateString: Date) => {
   const dateTimeOptions: Intl.DateTimeFormatOptions = {
