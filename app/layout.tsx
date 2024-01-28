@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Words & Strings",
   description: "Spoken Word & Poetry events in Qatar.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/was.ico",
   },
 };
 

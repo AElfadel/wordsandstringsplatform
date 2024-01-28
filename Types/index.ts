@@ -15,3 +15,27 @@ export type CreateUserParams = {
     username: string
     photo: string
   }
+
+  // Category params
+  export type CreateCategoryParams = {
+    categoryName: string;
+  }
+
+
+  //Event params
+  export type CreateEventParams = {
+    userId: string,
+    event: {
+      title: string;
+      description: string;
+      location: string;
+      imageUrl: string;
+      startDateTime: Date;
+      endDateTime: Date;
+      categoreyId: string;
+      price: string;
+      isFree: boolean;
+      url: string;
+    },
+    path: string,
+  }
