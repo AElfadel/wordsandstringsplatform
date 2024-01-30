@@ -5,40 +5,27 @@ import Image from "next/image";
 
 function Hero() {
   return (
-    <>
-      <section className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-        <div className="flex flex-col justify-center gap-8">
-          <h1 className=" font-semibold text-4xl">
-            Spoken Word & Poetry events in Qatar
-          </h1>
-          <p className="">
-            Register to perfom in our events or get your tickets to attend the
-            event
-          </p>
-          <Button asChild className="button w-full sm:w-fit">
-            <Link href="#events">Event</Link>
-          </Button>
-        </div>
-        <Image
-          src="/assets/images/hero_jan_24_trans.webp"
-          width={1000}
-          height={1000}
-          alt="Event hero"
-          className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
-        />
-      </section>
-      <section
-        id="events"
-        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
-      >
-        <h2 className="font-semibold text-xl">
-          Home of poetry <br /> in Qatar since 2014
-        </h2>
-        <div className="flex w-full gap-5 md:flex-row">
-          Search Cateogry Filter
-        </div>
-      </section>
-    </>
+    <section className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+      <div className="flex flex-col justify-center gap-8">
+        <h1 className=" font-semibold text-4xl">
+          Spoken Word & Poetry events in Qatar
+        </h1>
+        <p className="">
+          Register to perfom in our events or get your tickets to attend the
+          event
+        </p>
+        <Button asChild className="button w-full sm:w-fit">
+          <Link href="#events">Event</Link>
+        </Button>
+      </div>
+      <Image
+        src="/assets/images/hero_jan_24_trans.webp"
+        width={1000}
+        height={1000}
+        alt="Event hero"
+        className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
+      />
+    </section>
   );
 }
 

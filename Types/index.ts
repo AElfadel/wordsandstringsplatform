@@ -1,5 +1,7 @@
 // ====== USER PARAMS
 
+import { ICategory } from "@/lib/database/models/category.model"
+
 export type CreateUserParams = {
     clerkId: string
     firstName: string
@@ -38,4 +40,22 @@ export type CreateUserParams = {
       url: string;
     },
     path: string,
+  }
+
+  //Search params
+
+  export type SearchParamProps = {
+    params: {
+      id: string
+    }
+  }
+
+
+  // Get all events params 
+
+  export type getAllEventsParams = {
+    query: string;
+    category: string 
+    limit : number;
+    page: number; 
   }

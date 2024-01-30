@@ -12,7 +12,7 @@ export interface IEvent extends Document {
     price?: string;
     isFree: boolean;
     url?: string;
-    category: {
+    categorey: {
         _id: string,
         name: string
     }
