@@ -59,8 +59,6 @@ export default function EventForm({
 
   const { startUpload } = useUploadThing("imageUploader");
 
-  console.log(event);
-
   // 1. Define your form.
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),

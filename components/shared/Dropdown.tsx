@@ -69,7 +69,7 @@ function Dropdown({ value, userEmail, onChangeHandler }: DropdownHandler) {
           ))}
 
         <AlertDialog>
-          {userEmail === process.env.Admin ? (
+          {userEmail === process.env.Admin || "jonkol.ad@gmail.com" ? (
             <div>
               <AlertDialogTrigger className="p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500">
                 + New category
