@@ -31,7 +31,7 @@ async function EventDetails({ params: { id } }: SearchParamProps) {
                 className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500 text-center
               "
               >
-                {event.categorey.name}
+                {event.category.name}
               </p>
             </div>
             <p className="p-medium-18 ml-2 mt-2 sm:mt-0">

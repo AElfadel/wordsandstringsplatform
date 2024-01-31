@@ -1,12 +1,13 @@
 "use server"
 
-import { CreateEventParams, getAllEventsParams } from "@/Types";
+import { CreateEventParams, DeleteEventParams, UpdateEventParams, getAllEventsParams } from "@/Types";
 import { connectToDatabase } from "../database";
 import User from "../database/models/user.models";
 import Event from "../database/models/event.model";
 import { revalidatePath } from "next/cache";
 import { handleError } from "../utils";
 import Category from "../database/models/category.model";
+import { string } from "zod";
 
 
 //Create event
@@ -20,7 +21,7 @@ try{
     
   
 
-    const newEvent = await Event.create({...event, categorey: event.categoreyId, organizer: userId})
+    const newEvent = await Event.create({...event, category: event.categoryId, organizer: userId})
     revalidatePath(path)
 
     return JSON.parse(JSON.stringify(newEvent))
@@ -36,7 +37,7 @@ try{
 export async function populateEvent(query: any) {
     return query
     .populate({path: 'organizer', model: User, select: '_id firstName lastName'})
-    .populate({path: 'categorey', model: Category, select: '_id name'})
+    .populate({path: 'category', model: Category, select: '_id name'})
     }
 
     
@@ -87,3 +88,35 @@ export async function getAllEvents({query, limit = 6 , page, category} : getAllE
         console.log(error)
     }
 }
+
+
+//Delete Event 
+
+export async function deleteEvent({eventId, path} : DeleteEventParams) {
+try {
+await connectToDatabase()
+
+const deletedEvent = await Event.findByIdAndDelete(eventId)
+
+if (deletedEvent) revalidatePath(path);
+
+} catch (error) {
+    console.log(error)
+}
+}
+
+
+//Update Event 
+
+export async function updateEvent({eventId}: UpdateEventParams) {
+
+try {
+    await connectToDatabase()
+
+    const updatedEvent = await Event.findByIdAndUpdate(eventId)
+
+
+
+} catch(error) {
+    console.log(error)
+}}

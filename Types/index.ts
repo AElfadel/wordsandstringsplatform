@@ -1,6 +1,7 @@
 // ====== USER PARAMS
 
 import { ICategory } from "@/lib/database/models/category.model"
+import { IEvent } from "@/lib/database/models/event.model"
 
 export type CreateUserParams = {
     clerkId: string
@@ -34,7 +35,7 @@ export type CreateUserParams = {
       imageUrl: string;
       startDateTime: Date;
       endDateTime: Date;
-      categoreyId: string;
+      categoryId: string;
       price: string;
       isFree: boolean;
       url: string;
@@ -59,3 +60,32 @@ export type CreateUserParams = {
     limit : number;
     page: number; 
   }
+
+  //Delete event params 
+
+  export type DeleteEventParams = {
+    eventId: string;
+    path: string;
+
+  }
+
+
+  //Update event params
+
+  export type UpdateEventParams = {
+    userId: string;
+    eventId: string;
+    event: {
+      _id: string
+      title: string
+      imageUrl: string
+      description: string
+      location: string
+      startDateTime: Date
+      endDateTime: Date
+      categoryId: string
+      price: string
+      isFree: boolean
+      url: string
+    };
+  path: string;}

@@ -12,7 +12,7 @@ export interface IEvent extends Document {
     price?: string;
     isFree: boolean;
     url?: string;
-    categorey: {
+    category: {
         _id: string,
         name: string
     }
@@ -34,7 +34,7 @@ const EventSchema = new Schema({
     price: { type: String}, 
     isFree: { type: Boolean, default: false},
     url: { type: String},
-    categorey: {type: Schema.Types.ObjectId, ref: 'Categorey' },
+    category: {type: Schema.Types.ObjectId, ref: 'Category' },
     organizer: {type: Schema.Types.ObjectId, ref: 'User' },
 })
 

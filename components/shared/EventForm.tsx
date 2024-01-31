@@ -27,21 +27,39 @@ import { Checkbox } from "../ui/Checkbox";
 
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
-import { createEvent } from "@/lib/actions/event.actions";
+import { createEvent, updateEvent } from "@/lib/actions/event.actions";
+import { IEvent } from "@/lib/database/models/event.model";
 
 type EventFormProps = {
   userId: string;
   userEmail: string;
   type: "Create" | "Update";
+  eventId?: string;
+  event?: IEvent;
 };
 
-export default function EventForm({ userId, userEmail, type }: EventFormProps) {
+export default function EventForm({
+  userId,
+  userEmail,
+  type,
+  eventId,
+  event,
+}: EventFormProps) {
   const [files, setFiles] = useState<File[]>([]);
-  const initialValues = eventDefaultValues;
+  const initialValues =
+    event && type === "Update"
+      ? {
+          ...event,
+          startDateTime: new Date(event.startDateTime),
+          endDateTime: new Date(event.endDateTime),
+        }
+      : eventDefaultValues;
 
   const router = useRouter();
 
   const { startUpload } = useUploadThing("imageUploader");
+
+  console.log(event);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof eventFormSchema>>({
@@ -64,8 +82,6 @@ export default function EventForm({ userId, userEmail, type }: EventFormProps) {
     }
 
     if (type === "Create") {
-      console.log(values);
-
       try {
         const newEvent = await createEvent({
           event: {
@@ -80,7 +96,6 @@ export default function EventForm({ userId, userEmail, type }: EventFormProps) {
           form.reset();
           router.push(`/events/${newEvent._id}`);
         }
-        console.log(values);
       } catch (error) {
         console.log(error);
       }
@@ -112,10 +127,10 @@ export default function EventForm({ userId, userEmail, type }: EventFormProps) {
             )}
           />
 
-          {/* Categorey */}
+          {/* Category */}
           <FormField
             control={form.control}
-            name="categoreyId"
+            name="categoryId"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>

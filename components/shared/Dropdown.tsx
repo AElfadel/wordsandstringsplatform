@@ -37,8 +37,8 @@ function Dropdown({ value, userEmail, onChangeHandler }: DropdownHandler) {
   function handleAddCategory() {
     createCategory({
       categoryName: newCategory.trim(),
-    }).then((categorey) => {
-      setCategories((prevState) => [...prevState, categorey]);
+    }).then((category) => {
+      setCategories((prevState) => [...prevState, category]);
     });
   }
 
@@ -54,7 +54,7 @@ function Dropdown({ value, userEmail, onChangeHandler }: DropdownHandler) {
   return (
     <Select onValueChange={onChangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field ">
-        <SelectValue placeholder="Categorey" />
+        <SelectValue placeholder="Category" />
       </SelectTrigger>
       <SelectContent>
         {categories.length > 0 &&
@@ -76,11 +76,11 @@ function Dropdown({ value, userEmail, onChangeHandler }: DropdownHandler) {
               </AlertDialogTrigger>
               <AlertDialogContent className="bg-white">
                 <AlertDialogHeader>
-                  <AlertDialogTitle>New categorey</AlertDialogTitle>
+                  <AlertDialogTitle>New category</AlertDialogTitle>
                   <Input
                     className="input-field mt-3"
                     type="text"
-                    placeholder="categorey name"
+                    placeholder="category name"
                     onChange={(e) => setNewCategory(e.target.value)}
                   />
                 </AlertDialogHeader>
