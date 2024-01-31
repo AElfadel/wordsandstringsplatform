@@ -71,10 +71,8 @@ export type CreateUserParams = {
 
 
   //Update event params
-
   export type UpdateEventParams = {
-    userId: string;
-    eventId: string;
+    userId: string
     event: {
       _id: string
       title: string
@@ -87,5 +85,6 @@ export type CreateUserParams = {
       price: string
       isFree: boolean
       url: string
-    };
-  path: string;}
+    }
+    path: string
+  }

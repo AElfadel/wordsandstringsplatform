@@ -37,7 +37,7 @@ try{
 export async function populateEvent(query: any) {
     return query
     .populate({path: 'organizer', model: User, select: '_id firstName lastName'})
-    .populate({path: 'category', model: Category, select: '_id name'})
+    .populate({path: 'categorey', model: Category, select: '_id name'})
     }
 
     
@@ -108,14 +108,17 @@ if (deletedEvent) revalidatePath(path);
 
 //Update Event 
 
-export async function updateEvent({eventId}: UpdateEventParams) {
+export async function updateEvent({event, userId, path}: UpdateEventParams) {
 
 try {
     await connectToDatabase()
 
-    const updatedEvent = await Event.findByIdAndUpdate(eventId)
+    const updatedEvent = await Event.findByIdAndUpdate(event._id,  { ...event, category: event.categoryId },
+        { new: true })
 
+        revalidatePath(path)
 
+        return JSON.parse(JSON.stringify(updatedEvent))
 
 } catch(error) {
     console.log(error)

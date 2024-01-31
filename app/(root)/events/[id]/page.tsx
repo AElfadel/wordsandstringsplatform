@@ -7,6 +7,8 @@ import Image from "next/image";
 async function EventDetails({ params: { id } }: SearchParamProps) {
   const event: IEvent = await getEventByID(id);
 
+  console.log(event);
+
   return (
     <section className="flex justify-center bg-primary-50 bg-dotted-pattern bg-contain">
       <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
@@ -28,8 +30,8 @@ async function EventDetails({ params: { id } }: SearchParamProps) {
                 {event.isFree ? "FREE" : `Ticket Price: ${event.price} QAR`}
               </p>
               <p
-                className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500 text-center
-              "
+                className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500 text-center line-clamp-1
+            "
               >
                 {event.category.name}
               </p>
@@ -77,9 +79,12 @@ async function EventDetails({ params: { id } }: SearchParamProps) {
         <div className="flex flex-col gap-2">
           <p className="p-bold-20 text-gray-600">Event Description</p>
           <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
-          <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500">
+          <a
+            className="p-medium-16 lg:p-regular-18 truncate text-primary-500"
+            href={event.url}
+          >
             {event.url}
-          </p>
+          </a>
         </div>
       </div>
     </section>
