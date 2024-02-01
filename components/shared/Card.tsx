@@ -65,10 +65,10 @@ function Card({ hasOrderLink, hidePrice, event }: CardProps) {
             <span className="p-semibold-14 w-min text-nowrap rounded-full bg-green-100 px-4 py-1 text-green-60">
               {event.isFree ? "FREE" : `${event.price} QAR`}
             </span>
-            {/* <p className="p-semibold-12 text-sm w-min rounded-full bg-green-500/10 px-4 py-1 text-grey-500">
-            {event.category.name}
- 
-            </p> */}
+            <p className="p-semibold-12 text-sm w-min rounded-full bg-grey-500/10 px-4 py-1 text-grey-500 text-nowrap">
+              Words & Strings
+              {/* {event.category.name} */}
+            </p>
           </div>
         )}
         <p className="p-medium-16 p-medium-18 text-grey-500">
@@ -79,7 +79,7 @@ function Card({ hasOrderLink, hidePrice, event }: CardProps) {
         </p>
         <div className="flex-between w-full">
           <p className="p-medium-14 md:p-medium-16 text-green-600">
-            {event.category.name}
+            {/* {event.category.name} */}
           </p>
           {hasOrderLink && (
             <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">

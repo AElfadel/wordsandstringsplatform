@@ -29,17 +29,19 @@ async function EventDetails({ params: { id } }: SearchParamProps) {
               <p className="p-bold-20 rounded-full bg-green-500/10 px-5 py-2 text-green-700">
                 {event.isFree ? "FREE" : `Ticket Price: ${event.price} QAR`}
               </p>
-              <p
-                className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500 text-center line-clamp-1
+              {/* <p
+                className="p-medium-16 rounded-full bg-grey-500/10 px-4 py-2.5 text-grey-500 text-center text-nowrap line-clamp-1
             "
               >
-                {event.category.name}
-              </p>
+                Words & Strings
+                {/* {event.category.name}
+              </p> */}
             </div>
             <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
               by{" "}
               <span className="text-primary-500">
-                {event.organizer.firstName} {event.organizer.lastName}
+                Words & Strings
+                {/* {event.organizer.firstName} {event.organizer.lastName} */}
               </span>
             </p>
           </div>

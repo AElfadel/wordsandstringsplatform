@@ -37,7 +37,7 @@ try{
 export async function populateEvent(query: any) {
     return query
     .populate({path: 'organizer', model: User, select: '_id firstName lastName'})
-    .populate({path: 'categorey', model: Category, select: '_id name'})
+    .populate({path: 'category', model: Category, select: '_id name'})
     }
 
     
